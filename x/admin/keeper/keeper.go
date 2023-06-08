@@ -7,6 +7,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrorslegacy "github.com/cosmos/cosmos-sdk/types/errors"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 
 	"github.com/noria-net/module-admin/x/admin/types"
@@ -48,4 +49,19 @@ func NewKeeper(
 
 func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 	return ctx.Logger().With("module", fmt.Sprintf("x/%s", types.ModuleName))
+}
+
+func (k Keeper) ValidateAdmin(ctx sdk.Context, admin string) error {
+	moduleAdmin := k.Admin(ctx)
+	if len(moduleAdmin) == 0 {
+		return types.ErrAdminNotInitialized
+	}
+	_, err := sdk.AccAddressFromBech32(admin)
+	if err != nil {
+		return sdkerrorslegacy.ErrInvalidAddress
+	}
+	if k.Admin(ctx) != admin {
+		return sdkerrorslegacy.ErrUnauthorized
+	}
+	return nil
 }

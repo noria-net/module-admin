@@ -1,7 +1,20 @@
 syntax = "proto3";
+
 package moduleadmin.admin;
 
 option go_package = "github.com/noria-net/module-admin/x/admin/types";
 
 // Msg defines the Msg service.
-service Msg {}
+service Msg {
+  rpc UpdateAlliance (MsgUpdateAlliance) returns (MsgUpdateAllianceResponse);
+}
+message MsgUpdateAlliance {
+  string creator         = 1;
+  string denom           = 2;
+  string rewardWeight    = 3;
+  string consensusWeight = 4;
+  string consensusCap    = 5;
+}
+
+message MsgUpdateAllianceResponse {}
+

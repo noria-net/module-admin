@@ -3,10 +3,11 @@ package types
 // DONTCOVER
 
 import (
-	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
+	sdkerrors "cosmossdk.io/errors"
 )
 
 // x/admin module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrUpdateAlliance      = sdkerrors.Register(ModuleName, 1100, "error updating alliance")
+	ErrAdminNotInitialized = sdkerrors.Register(ModuleName, 1101, "error admin not initialized")
 )
