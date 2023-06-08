@@ -1,0 +1,12 @@
+syntax = "proto3";
+package moduleadmin.admin;
+
+import "gogoproto/gogo.proto";
+import "moduleadmin/admin/params.proto";
+
+option go_package = "github.com/noria-net/module-admin/x/admin/types";
+
+// GenesisState defines the admin module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}

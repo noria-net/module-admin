@@ -1,0 +1,13 @@
+syntax = "proto3";
+package moduleadmin.admin;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/noria-net/module-admin/x/admin/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+  string admin = 1 [(gogoproto.moretags) = "yaml:\"admin\""];
+}

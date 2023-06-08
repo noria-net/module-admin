@@ -1,14 +1,17 @@
 version: 1
 accounts:
-  - name: val1
+  - name: val1 # chain1s47eghgte9gw8j9y465l5a3x433ncrulrc239f
+    mnemonic: "veteran install subject evil slow angry heart enact patrol reunion arch venue warrior employ upper antenna nature rifle coffee east chronic fan midnight illegal"
     coins:
       - 1000000000ucrd
       - 1000000000unoria
-  - name: me
+  - name: me # chain1pnx92rmjfy7lp2znqn5j29n4mx4afpwk6szvlq
+    mnemonic: "sleep capital aisle raven panel derive divorce tray flag door catch front slim clap outside earth smart bus decade beauty wonder cross chaos picture"
     coins:
       - 1000000000ucrd
       - 1000000000unoria
-  - name: faucet
+  - name: faucet # chain1smfmalx7z98krlnrnl3nmfdltktsvj02ead9fs
+    mnemonic: "universe feed about battle toast bomb exile cook cry dose receive crucial ecology pool useful mutual pencil topple device obscure drink broccoli thrive shuffle"
     coins:
       - 1000000000ucrd
       - 1000000000unoria
@@ -68,7 +71,7 @@ genesis:
       tally_params:
         quorum: "0.000001"
       voting_params:
-        voting_period: 30s
+        voting_period: 10s
     mint:
       minter:
         annual_provisions: "0.0"
@@ -82,11 +85,9 @@ genesis:
     staking:
       params:
         bond_denom: unoria
-    tokenfactory:
+    admin:
       params:
-        denom_creation_fee:
-        - amount: "1000000"
-          denom: ucrd
+        admin: chain1pnx92rmjfy7lp2znqn5j29n4mx4afpwk6szvlq
   chain_id: chain-1
 validators:
 - name: val1
